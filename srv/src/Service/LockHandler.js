@@ -32,11 +32,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TableLockilandLerService = void 0;
+exports.TableLockHandlerService = void 0;
 const ContainerConfig_1 = require("../Cache/ContainerConfig");
 const Utiltity_1 = require("../Utility/Utiltity");
 const constants = __importStar(require("../constants/constants.json"));
-class TableLockilandLerService {
+class TableLockHandlerService {
     constructor() {
         // Constructor logic if needed
     }
@@ -152,5 +152,58 @@ class TableLockilandLerService {
             }
         }, constants.acquireLockConstants.timeouts.lockTimeout);
     }
+    releasLock(req) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const tables = req.data.request.tables;
+            if (!Utiltity_1.Utility.validateTables(tables)) {
+                req.reject(400, constants.acquireLockConstants.invalidTableMessage);
+            }
+            if (!Utiltity_1.Utility.validateApplication(req.data.request.ricef)) {
+                req.reject(400, constants.acquireLockConstants.invalidApplication);
+            }
+            const result = this.expireLock(req);
+            return result;
+        });
+    }
+    expireLock(req) {
+        const tableLockHashMap = ContainerConfig_1.container.get('cacheLockMap');
+        const key = {
+            fields: req.data.request.fields.sort(),
+            tables: req.data.request.tables.sort()
+        };
+        if (tableLockHashMap.hasKey(key)) {
+            let lockDetails = tableLockHashMap.get(key);
+            // Release lock if it belongs to the same user and application
+            if (lockDetails && lockDetails.isLocked && lockDetails.user === req.data.request.user && lockDetails.app_id === req.data.request.ricef) {
+                lockDetails.isLocked = false;
+                lockDetails.user = "";
+                tableLockHashMap.set(key, lockDetails);
+                const result = this.prepareUnlockResponse(true, constants.acquireLockConstants.releaseLockConstants.lockReleaseSuccess);
+                return result;
+            }
+            // Attempt to release lock created by another user
+            else if (lockDetails && lockDetails.isLocked && lockDetails.user !== req.data.request.user) {
+                const result = this.prepareUnlockResponse(false, constants.acquireLockConstants.releaseLockConstants.lockOwnershipFailure);
+                return result;
+            }
+            // Same user trying to release lock from another app
+            else if (lockDetails && lockDetails.isLocked && lockDetails.user === req.data.request.user && lockDetails.app_id !== req.data.request.ricef) {
+                const message = `${constants.acquireLockConstants.releaseLockConstants.differentAppLock} ${req.data.request.user} from ${lockDetails.app_id}`;
+                const result = this.prepareUnlockResponse(false, message);
+                return result;
+            }
+            // Edge condition: lock got cleared, nothing to unlock
+            else {
+                const message = constants.acquireLockConstants.releaseLockConstants.notLockedYet;
+                const result = this.prepareUnlockResponse(false, message);
+                return result;
+            }
+        }
+        else {
+            // Lock was not registered to unlock
+            const result = this.prepareUnlockResponse(false, constants.acquireLockConstants.releaseLockConstants.noExistingLock);
+            return result;
+        }
+    }
 }
-exports.TableLockilandLerService = TableLockilandLerService;
+exports.TableLockHandlerService = TableLockHandlerService;

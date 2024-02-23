@@ -4,7 +4,7 @@ import { TableLockHashMap } from "../Cache/LockMap";
 import { Utility } from '../Utility/Utiltity';
 import * as constants from '../constants/constants.json';
 
-export class TableLockilandLerService {
+export class TableLockHandlerService {
 
     constructor() {
         // Constructor logic if needed
@@ -140,5 +140,63 @@ export class TableLockilandLerService {
             }
         },constants.acquireLockConstants.timeouts.lockTimeout);
     }
+    public async releasLock(req:any):Promise<UnlockResponse>{
+    const tables = req.data.request.tables;
+
+    if (!Utility.validateTables(tables)) {
+        req.reject(400, constants.acquireLockConstants.invalidTableMessage);
+    }
+    
+    if (!Utility.validateApplication(req.data.request.ricef)) {
+        req.reject(400, constants.acquireLockConstants.invalidApplication);
+    }
+    
+    const result = this.expireLock(req);
+    
+    return result;
+}
+
+private expireLock(req: any): UnlockResponse {
+    const tableLockHashMap = container.get<TableLockHashMap>('cacheLockMap');
+    const key: TableKeys = {
+        fields: req.data.request.fields.sort(),
+        tables: req.data.request.tables.sort()
+    };
+
+    if (tableLockHashMap.hasKey(key)) {
+        let lockDetails: LockDetails | undefined = tableLockHashMap.get(key);
+
+        // Release lock if it belongs to the same user and application
+        if (lockDetails && lockDetails.isLocked && lockDetails.user === req.data.request.user && lockDetails.app_id === req.data.request.ricef) {
+            lockDetails.isLocked = false;
+            lockDetails.user = "";
+            tableLockHashMap.set(key, lockDetails);
+
+            const result: UnlockResponse = this.prepareUnlockResponse(true, constants.acquireLockConstants.releaseLockConstants.lockReleaseSuccess);
+            return result;
+        }
+        // Attempt to release lock created by another user
+        else if (lockDetails && lockDetails.isLocked && lockDetails.user !== req.data.request.user) {
+            const result: UnlockResponse = this.prepareUnlockResponse(false, constants.acquireLockConstants.releaseLockConstants.lockOwnershipFailure);
+            return result;
+        }
+        // Same user trying to release lock from another app
+        else if (lockDetails && lockDetails.isLocked && lockDetails.user === req.data.request.user && lockDetails.app_id !== req.data.request.ricef) {
+            const message = `${constants.acquireLockConstants.releaseLockConstants.differentAppLock} ${req.data.request.user} from ${lockDetails.app_id}`;
+            const result: UnlockResponse = this.prepareUnlockResponse(false, message);
+            return result;
+        }
+        // Edge condition: lock got cleared, nothing to unlock
+        else {
+            const message = constants.acquireLockConstants.releaseLockConstants.notLockedYet;
+            const result: UnlockResponse = this.prepareUnlockResponse(false, message);
+            return result;
+        }
+    } else {
+        // Lock was not registered to unlock
+        const result: UnlockResponse = this.prepareUnlockResponse(false, constants.acquireLockConstants.releaseLockConstants.noExistingLock);
+        return result;
+    }
+}
 
 }
