@@ -15,15 +15,17 @@
     "passport": "^0.7.0",
     "reflect-metadata": "^0.2.1",
     "ts-node": "^10.9.2",
-    "typedoc": "^0.25.8",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
-    "@sap/cds-dk": "^7"
+    "@sap/cds-dk": "^7",
+    "markdown-magic": "^2.6.1",
+    "typedoc": "^0.25.8"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "generate-docs": "typedoc --out ./docs --json ./docs/docs.json ./srv/src && npx markdown-magic ./README.md"
   },
   "cds": {
     "requires": {

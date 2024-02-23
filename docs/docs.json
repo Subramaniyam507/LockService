@@ -1,0 +1,2809 @@
+{
+	"id": 0,
+	"name": "LockService",
+	"variant": "project",
+	"kind": 1,
+	"flags": {},
+	"children": [
+		{
+			"id": 1,
+			"name": "Cache/ContainerConfig",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 2,
+					"name": "container",
+					"variant": "declaration",
+					"kind": 32,
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Creating a new Inversify IoC (Inversion of Control) container."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@remarks",
+								"content": [
+									{
+										"kind": "text",
+										"text": "The IoC container will be used for dependency injection."
+									}
+								]
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "Cache/ContainerConfig.ts",
+							"line": 13,
+							"character": 6,
+							"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/ContainerConfig.ts#L13"
+						}
+					],
+					"type": {
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/inversify/lib/container/container.d.ts",
+							"qualifiedName": "Container"
+						},
+						"name": "Container",
+						"package": "inversify"
+					},
+					"defaultValue": "..."
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"children": [
+						2
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "Cache/ContainerConfig.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/ContainerConfig.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 3,
+			"name": "Cache/LockMap",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 4,
+					"name": "TableLockHashMap",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Service providing a hash map for managing locks associated with table keys."
+							}
+						],
+						"blockTags": [
+							{
+								"tag": "@remarks",
+								"content": [
+									{
+										"kind": "text",
+										"text": "This class uses an Inversion of Control (IoC) container and dependency injection via Inversify."
+									}
+								]
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 5,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "Cache/LockMap.ts",
+									"line": 22,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L22"
+								}
+							],
+							"signatures": [
+								{
+									"id": 6,
+									"name": "new TableLockHashMap",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Constructs a new instance of the TableLockHashMap class.\nInitializes the internal cacheLockMap."
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Cache/LockMap.ts",
+											"line": 22,
+											"character": 4,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L22"
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 4,
+										"name": "TableLockHashMap",
+										"package": "LockService"
+									}
+								}
+							]
+						},
+						{
+							"id": 7,
+							"name": "cacheLockMap",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isPrivate": true
+							},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "Internal map storing lock details associated with serialized table keys."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "Cache/LockMap.ts",
+									"line": 16,
+									"character": 12,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L16"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/typescript/lib/lib.es2015.collection.d.ts",
+									"qualifiedName": "Map"
+								},
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "reference",
+										"target": 24,
+										"name": "LockDetails",
+										"package": "LockService"
+									}
+								],
+								"name": "Map",
+								"package": "typescript"
+							}
+						},
+						{
+							"id": 17,
+							"name": "delete",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "Cache/LockMap.ts",
+									"line": 57,
+									"character": 11,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L57"
+								}
+							],
+							"signatures": [
+								{
+									"id": 18,
+									"name": "delete",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Deletes the lock entry for the specified table key from the cache map."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "True if the lock entry was successfully deleted, false otherwise."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Cache/LockMap.ts",
+											"line": 57,
+											"character": 11,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L57"
+										}
+									],
+									"parameters": [
+										{
+											"id": 19,
+											"name": "key",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The table key."
+													}
+												]
+											},
+											"type": {
+												"type": "reference",
+												"target": 28,
+												"name": "TableKeys",
+												"package": "LockService"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							]
+						},
+						{
+							"id": 14,
+							"name": "get",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "Cache/LockMap.ts",
+									"line": 48,
+									"character": 11,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L48"
+								}
+							],
+							"signatures": [
+								{
+									"id": 15,
+									"name": "get",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Retrieves the lock details for the specified table key from the cache map."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "The lock details associated with the key, or undefined if not found."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Cache/LockMap.ts",
+											"line": 48,
+											"character": 11,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L48"
+										}
+									],
+									"parameters": [
+										{
+											"id": 16,
+											"name": "key",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The table key."
+													}
+												]
+											},
+											"type": {
+												"type": "reference",
+												"target": 28,
+												"name": "TableKeys",
+												"package": "LockService"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "reference",
+												"target": 24,
+												"name": "LockDetails",
+												"package": "LockService"
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"id": 8,
+							"name": "getCacheMap",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "Cache/LockMap.ts",
+									"line": 30,
+									"character": 11,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L30"
+								}
+							],
+							"signatures": [
+								{
+									"id": 9,
+									"name": "getCacheMap",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Retrieves the entire cache map containing table keys and associated lock details."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "The cache map."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Cache/LockMap.ts",
+											"line": 30,
+											"character": 11,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L30"
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/typescript/lib/lib.es2015.collection.d.ts",
+											"qualifiedName": "Map"
+										},
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "reference",
+												"target": 24,
+												"name": "LockDetails",
+												"package": "LockService"
+											}
+										],
+										"name": "Map",
+										"package": "typescript"
+									}
+								}
+							]
+						},
+						{
+							"id": 20,
+							"name": "hasKey",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "Cache/LockMap.ts",
+									"line": 66,
+									"character": 11,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L66"
+								}
+							],
+							"signatures": [
+								{
+									"id": 21,
+									"name": "hasKey",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Checks if the cache map contains a lock entry for the specified table key."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "True if the cache map contains a lock entry for the key, false otherwise."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Cache/LockMap.ts",
+											"line": 66,
+											"character": 11,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L66"
+										}
+									],
+									"parameters": [
+										{
+											"id": 22,
+											"name": "key",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The table key."
+													}
+												]
+											},
+											"type": {
+												"type": "reference",
+												"target": 28,
+												"name": "TableKeys",
+												"package": "LockService"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							]
+						},
+						{
+							"id": 10,
+							"name": "set",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "Cache/LockMap.ts",
+									"line": 39,
+									"character": 11,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L39"
+								}
+							],
+							"signatures": [
+								{
+									"id": 11,
+									"name": "set",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Sets a lock entry in the cache map for the specified table key."
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Cache/LockMap.ts",
+											"line": 39,
+											"character": 11,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L39"
+										}
+									],
+									"parameters": [
+										{
+											"id": 12,
+											"name": "key",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The table key."
+													}
+												]
+											},
+											"type": {
+												"type": "reference",
+												"target": 28,
+												"name": "TableKeys",
+												"package": "LockService"
+											}
+										},
+										{
+											"id": 13,
+											"name": "value",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The lock details associated with the key."
+													}
+												]
+											},
+											"type": {
+												"type": "reference",
+												"target": 24,
+												"name": "LockDetails",
+												"package": "LockService"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								5
+							]
+						},
+						{
+							"title": "Properties",
+							"children": [
+								7
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								17,
+								14,
+								8,
+								20,
+								10
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "Cache/LockMap.ts",
+							"line": 11,
+							"character": 13,
+							"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L11"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						4
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "Cache/LockMap.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Cache/LockMap.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 23,
+			"name": "CommonTypes/CommonTypes",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 37,
+					"name": "CheckLock",
+					"variant": "declaration",
+					"kind": 256,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Interface representing the result of checking the lock status."
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 39,
+							"name": "app_id",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "The application ID associated with the lock."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 83,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L83"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 38,
+							"name": "isLocked",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "Indicates whether the resource is currently locked."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 78,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L78"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						},
+						{
+							"id": 40,
+							"name": "user",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "The user who holds the lock."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 88,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L88"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"children": [
+								39,
+								38,
+								40
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "CommonTypes/CommonTypes.ts",
+							"line": 74,
+							"character": 17,
+							"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L74"
+						}
+					]
+				},
+				{
+					"id": 24,
+					"name": "LockDetails",
+					"variant": "declaration",
+					"kind": 256,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Interface representing the details of a lock."
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 26,
+							"name": "app_id",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "The application ID associated with the lock."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 14,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L14"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 25,
+							"name": "isLocked",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "Indicates whether the resource is currently locked."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 9,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L9"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						},
+						{
+							"id": 27,
+							"name": "user",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "The user who holds the lock."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 19,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L19"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"children": [
+								26,
+								25,
+								27
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "CommonTypes/CommonTypes.ts",
+							"line": 5,
+							"character": 17,
+							"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L5"
+						}
+					]
+				},
+				{
+					"id": 31,
+					"name": "LockResponse",
+					"variant": "declaration",
+					"kind": 256,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Interface representing the response to a lock request."
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 32,
+							"name": "isLocked",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "Indicates whether the lock request was successful."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 46,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L46"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						},
+						{
+							"id": 33,
+							"name": "message",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "A message providing additional information about the lock status."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 51,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L51"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"children": [
+								32,
+								33
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "CommonTypes/CommonTypes.ts",
+							"line": 42,
+							"character": 17,
+							"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L42"
+						}
+					]
+				},
+				{
+					"id": 28,
+					"name": "TableKeys",
+					"variant": "declaration",
+					"kind": 256,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Interface representing the keys associated with a table for locking purposes."
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 29,
+							"name": "fields",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "An array of field names associated with the table."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 30,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L30"
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "string"
+								}
+							}
+						},
+						{
+							"id": 30,
+							"name": "tables",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "An array of table names."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 35,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L35"
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "string"
+								}
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"children": [
+								29,
+								30
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "CommonTypes/CommonTypes.ts",
+							"line": 26,
+							"character": 17,
+							"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L26"
+						}
+					]
+				},
+				{
+					"id": 34,
+					"name": "UnlockResponse",
+					"variant": "declaration",
+					"kind": 256,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Interface representing the response to an unlock request."
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 35,
+							"name": "isLockReleased",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "Indicates whether the resource was successfully unlocked."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 62,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L62"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						},
+						{
+							"id": 36,
+							"name": "message",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "A message providing additional information about the unlock status."
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "CommonTypes/CommonTypes.ts",
+									"line": 67,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L67"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"children": [
+								35,
+								36
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "CommonTypes/CommonTypes.ts",
+							"line": 58,
+							"character": 17,
+							"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L58"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Interfaces",
+					"children": [
+						37,
+						24,
+						31,
+						28,
+						34
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "CommonTypes/CommonTypes.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/CommonTypes/CommonTypes.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 41,
+			"name": "Serializer/KeySerializer",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 42,
+					"name": "KeySerializer",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Utility class for serializing TableKeys using JSON.stringify."
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 46,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"signatures": [
+								{
+									"id": 47,
+									"name": "new KeySerializer",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 42,
+										"name": "KeySerializer",
+										"package": "LockService"
+									}
+								}
+							]
+						},
+						{
+							"id": 43,
+							"name": "serialize",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPublic": true,
+								"isStatic": true
+							},
+							"sources": [
+								{
+									"fileName": "Serializer/KeySerializer.ts",
+									"line": 14,
+									"character": 18,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Serializer/KeySerializer.ts#L14"
+								}
+							],
+							"signatures": [
+								{
+									"id": 44,
+									"name": "serialize",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Serializes a TableKeys object into a JSON-formatted string."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@static",
+												"content": []
+											},
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "The serialized JSON string."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Serializer/KeySerializer.ts",
+											"line": 14,
+											"character": 18,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Serializer/KeySerializer.ts#L14"
+										}
+									],
+									"parameters": [
+										{
+											"id": 45,
+											"name": "key",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The TableKeys object to be serialized."
+													}
+												]
+											},
+											"type": {
+												"type": "reference",
+												"target": 28,
+												"name": "TableKeys",
+												"package": "LockService"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								46
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								43
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "Serializer/KeySerializer.ts",
+							"line": 7,
+							"character": 13,
+							"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Serializer/KeySerializer.ts#L7"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						42
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "Serializer/KeySerializer.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Serializer/KeySerializer.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 48,
+			"name": "Service/LockHandler",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 49,
+					"name": "TableLockHandlerService",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Service for handling table locks."
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 50,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "Service/LockHandler.ts",
+									"line": 12,
+									"character": 4,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L12"
+								}
+							],
+							"signatures": [
+								{
+									"id": 51,
+									"name": "new TableLockHandlerService",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "Service/LockHandler.ts",
+											"line": 12,
+											"character": 4,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L12"
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 49,
+										"name": "TableLockHandlerService",
+										"package": "LockService"
+									}
+								}
+							]
+						},
+						{
+							"id": 52,
+							"name": "acquireLock",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "Service/LockHandler.ts",
+									"line": 21,
+									"character": 17,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L21"
+								}
+							],
+							"signatures": [
+								{
+									"id": 53,
+									"name": "acquireLock",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Attempts to acquire a lock based on the provided request."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@async",
+												"content": []
+											},
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "A promise resolving to the lock response."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Service/LockHandler.ts",
+											"line": 21,
+											"character": 17,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L21"
+										}
+									],
+									"parameters": [
+										{
+											"id": 54,
+											"name": "req",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The request object containing lock details."
+													}
+												]
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/typescript/lib/lib.es5.d.ts",
+											"qualifiedName": "Promise"
+										},
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": 31,
+												"name": "LockResponse",
+												"package": "LockService"
+											}
+										],
+										"name": "Promise",
+										"package": "typescript"
+									}
+								}
+							]
+						},
+						{
+							"id": 66,
+							"name": "checkLock",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "Service/LockHandler.ts",
+									"line": 134,
+									"character": 17,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L134"
+								}
+							],
+							"signatures": [
+								{
+									"id": 67,
+									"name": "checkLock",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Checks the lock status for the specified record."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@async",
+												"content": []
+											},
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "A promise resolving to the lock details."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Service/LockHandler.ts",
+											"line": 134,
+											"character": 17,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L134"
+										}
+									],
+									"parameters": [
+										{
+											"id": 68,
+											"name": "record",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The table keys representing the record."
+													}
+												]
+											},
+											"type": {
+												"type": "reference",
+												"target": 28,
+												"name": "TableKeys",
+												"package": "LockService"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/typescript/lib/lib.es5.d.ts",
+											"qualifiedName": "Promise"
+										},
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": 24,
+												"name": "LockDetails",
+												"package": "LockService"
+											}
+										],
+										"name": "Promise",
+										"package": "typescript"
+									}
+								}
+							]
+						},
+						{
+							"id": 75,
+							"name": "expireLock",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPrivate": true
+							},
+							"sources": [
+								{
+									"fileName": "Service/LockHandler.ts",
+									"line": 207,
+									"character": 8,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L207"
+								}
+							],
+							"signatures": [
+								{
+									"id": 76,
+									"name": "expireLock",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {
+										"isPrivate": true
+									},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Expires a lock based on the provided request."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "The unlock response."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Service/LockHandler.ts",
+											"line": 207,
+											"character": 8,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L207"
+										}
+									],
+									"parameters": [
+										{
+											"id": 77,
+											"name": "req",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The request object containing lock details."
+													}
+												]
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 34,
+										"name": "UnlockResponse",
+										"package": "LockService"
+									}
+								}
+							]
+						},
+						{
+							"id": 55,
+							"name": "grantLock",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPrivate": true
+							},
+							"sources": [
+								{
+									"fileName": "Service/LockHandler.ts",
+									"line": 41,
+									"character": 12,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L41"
+								}
+							],
+							"signatures": [
+								{
+									"id": 56,
+									"name": "grantLock",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {
+										"isPrivate": true
+									},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Grants a lock based on the provided request."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "The lock response."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Service/LockHandler.ts",
+											"line": 41,
+											"character": 12,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L41"
+										}
+									],
+									"parameters": [
+										{
+											"id": 57,
+											"name": "req",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The request object containing lock details."
+													}
+												]
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 31,
+										"name": "LockResponse",
+										"package": "LockService"
+									}
+								}
+							]
+						},
+						{
+							"id": 58,
+							"name": "prepareLockResponse",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPrivate": true
+							},
+							"sources": [
+								{
+									"fileName": "Service/LockHandler.ts",
+									"line": 107,
+									"character": 12,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L107"
+								}
+							],
+							"signatures": [
+								{
+									"id": 59,
+									"name": "prepareLockResponse",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {
+										"isPrivate": true
+									},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Prepares a lock response with the specified parameters."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "The prepared lock response."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Service/LockHandler.ts",
+											"line": 107,
+											"character": 12,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L107"
+										}
+									],
+									"parameters": [
+										{
+											"id": 60,
+											"name": "isLocked",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "Indicates whether the lock was successful."
+													}
+												]
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										},
+										{
+											"id": 61,
+											"name": "message",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The message associated with the lock response."
+													}
+												]
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 31,
+										"name": "LockResponse",
+										"package": "LockService"
+									}
+								}
+							]
+						},
+						{
+							"id": 62,
+							"name": "prepareUnlockResponse",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPrivate": true
+							},
+							"sources": [
+								{
+									"fileName": "Service/LockHandler.ts",
+									"line": 121,
+									"character": 12,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L121"
+								}
+							],
+							"signatures": [
+								{
+									"id": 63,
+									"name": "prepareUnlockResponse",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {
+										"isPrivate": true
+									},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Prepares an unlock response with the specified parameters."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "The prepared unlock response."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Service/LockHandler.ts",
+											"line": 121,
+											"character": 12,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L121"
+										}
+									],
+									"parameters": [
+										{
+											"id": 64,
+											"name": "isLockReleased",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "Indicates whether the unlock was successful."
+													}
+												]
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										},
+										{
+											"id": 65,
+											"name": "message",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The message associated with the unlock response."
+													}
+												]
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 34,
+										"name": "UnlockResponse",
+										"package": "LockService"
+									}
+								}
+							]
+						},
+						{
+							"id": 72,
+							"name": "releasLock",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "Service/LockHandler.ts",
+									"line": 186,
+									"character": 17,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L186"
+								}
+							],
+							"signatures": [
+								{
+									"id": 73,
+									"name": "releasLock",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Attempts to release a lock based on the provided request."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@async",
+												"content": []
+											},
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "A promise resolving to the unlock response."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Service/LockHandler.ts",
+											"line": 186,
+											"character": 17,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L186"
+										}
+									],
+									"parameters": [
+										{
+											"id": 74,
+											"name": "req",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The request object containing lock details."
+													}
+												]
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "node_modules/typescript/lib/lib.es5.d.ts",
+											"qualifiedName": "Promise"
+										},
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": 34,
+												"name": "UnlockResponse",
+												"package": "LockService"
+											}
+										],
+										"name": "Promise",
+										"package": "typescript"
+									}
+								}
+							]
+						},
+						{
+							"id": 69,
+							"name": "setTimeouts",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPrivate": true
+							},
+							"sources": [
+								{
+									"fileName": "Service/LockHandler.ts",
+									"line": 160,
+									"character": 12,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L160"
+								}
+							],
+							"signatures": [
+								{
+									"id": 70,
+									"name": "setTimeouts",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {
+										"isPrivate": true
+									},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Sets timeouts for key expiration and lock refresh."
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Service/LockHandler.ts",
+											"line": 160,
+											"character": 12,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L160"
+										}
+									],
+									"parameters": [
+										{
+											"id": 71,
+											"name": "key",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The table keys associated with the lock."
+													}
+												]
+											},
+											"type": {
+												"type": "reference",
+												"target": 28,
+												"name": "TableKeys",
+												"package": "LockService"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								50
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								52,
+								66,
+								75,
+								55,
+								58,
+								62,
+								72,
+								69
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "Service/LockHandler.ts",
+							"line": 10,
+							"character": 13,
+							"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L10"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						49
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "Service/LockHandler.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Service/LockHandler.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 78,
+			"name": "Utility/Utiltity",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 79,
+					"name": "Utility",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Utility class containing methods for validation."
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 86,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"signatures": [
+								{
+									"id": 87,
+									"name": "new Utility",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 79,
+										"name": "Utility",
+										"package": "LockService"
+									}
+								}
+							]
+						},
+						{
+							"id": 83,
+							"name": "validateApplication",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPublic": true,
+								"isStatic": true
+							},
+							"sources": [
+								{
+									"fileName": "Utility/Utiltity.ts",
+									"line": 33,
+									"character": 18,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Utility/Utiltity.ts#L33"
+								}
+							],
+							"signatures": [
+								{
+									"id": 84,
+									"name": "validateApplication",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Validates the application ID (Ricef)."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "Returns true if the application ID is valid, otherwise false."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Utility/Utiltity.ts",
+											"line": 33,
+											"character": 18,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Utility/Utiltity.ts#L33"
+										}
+									],
+									"parameters": [
+										{
+											"id": 85,
+											"name": "app_id",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "The application ID (Ricef) to be validated."
+													}
+												]
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							]
+						},
+						{
+							"id": 80,
+							"name": "validateTables",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isPublic": true,
+								"isStatic": true
+							},
+							"sources": [
+								{
+									"fileName": "Utility/Utiltity.ts",
+									"line": 13,
+									"character": 18,
+									"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Utility/Utiltity.ts#L13"
+								}
+							],
+							"signatures": [
+								{
+									"id": 81,
+									"name": "validateTables",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "Validates the existence of tables."
+											}
+										],
+										"blockTags": [
+											{
+												"tag": "@returns",
+												"content": [
+													{
+														"kind": "text",
+														"text": "Returns true if all tables exist, otherwise false."
+													}
+												]
+											}
+										]
+									},
+									"sources": [
+										{
+											"fileName": "Utility/Utiltity.ts",
+											"line": 13,
+											"character": 18,
+											"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Utility/Utiltity.ts#L13"
+										}
+									],
+									"parameters": [
+										{
+											"id": 82,
+											"name": "tables",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"comment": {
+												"summary": [
+													{
+														"kind": "text",
+														"text": "An array of table names to be validated."
+													}
+												]
+											},
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								86
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								83,
+								80
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "Utility/Utiltity.ts",
+							"line": 6,
+							"character": 13,
+							"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Utility/Utiltity.ts#L6"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						79
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "Utility/Utiltity.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/Subramaniyam507/LockService/blob/98c96e2/srv/src/Utility/Utiltity.ts#L1"
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "Modules",
+			"children": [
+				1,
+				3,
+				23,
+				41,
+				48,
+				78
+			]
+		}
+	],
+	"packageName": "LockService",
+	"readme": [
+		{
+			"kind": "text",
+			"text": "<!-- AUTO-GENERATED-CONTENT:START (markdown-magic) -->\n<!-- AUTO-GENERATED-CONTENT:END -->"
+		}
+	],
+	"symbolIdMap": {
+		"1": {
+			"sourceFileName": "srv/src/Cache/ContainerConfig.ts",
+			"qualifiedName": ""
+		},
+		"2": {
+			"sourceFileName": "srv/src/Cache/ContainerConfig.ts",
+			"qualifiedName": "container"
+		},
+		"3": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": ""
+		},
+		"4": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap"
+		},
+		"5": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.__constructor"
+		},
+		"6": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap"
+		},
+		"7": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.cacheLockMap"
+		},
+		"8": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.getCacheMap"
+		},
+		"9": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.getCacheMap"
+		},
+		"10": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.set"
+		},
+		"11": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.set"
+		},
+		"12": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "key"
+		},
+		"13": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "value"
+		},
+		"14": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.get"
+		},
+		"15": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.get"
+		},
+		"16": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "key"
+		},
+		"17": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.delete"
+		},
+		"18": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.delete"
+		},
+		"19": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "key"
+		},
+		"20": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.hasKey"
+		},
+		"21": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "TableLockHashMap.hasKey"
+		},
+		"22": {
+			"sourceFileName": "srv/src/Cache/LockMap.ts",
+			"qualifiedName": "key"
+		},
+		"23": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": ""
+		},
+		"24": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "LockDetails"
+		},
+		"25": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "LockDetails.isLocked"
+		},
+		"26": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "LockDetails.app_id"
+		},
+		"27": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "LockDetails.user"
+		},
+		"28": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "TableKeys"
+		},
+		"29": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "TableKeys.fields"
+		},
+		"30": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "TableKeys.tables"
+		},
+		"31": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "LockResponse"
+		},
+		"32": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "LockResponse.isLocked"
+		},
+		"33": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "LockResponse.message"
+		},
+		"34": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "UnlockResponse"
+		},
+		"35": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "UnlockResponse.isLockReleased"
+		},
+		"36": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "UnlockResponse.message"
+		},
+		"37": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "CheckLock"
+		},
+		"38": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "CheckLock.isLocked"
+		},
+		"39": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "CheckLock.app_id"
+		},
+		"40": {
+			"sourceFileName": "srv/src/CommonTypes/CommonTypes.ts",
+			"qualifiedName": "CheckLock.user"
+		},
+		"41": {
+			"sourceFileName": "srv/src/Serializer/KeySerializer.ts",
+			"qualifiedName": ""
+		},
+		"42": {
+			"sourceFileName": "srv/src/Serializer/KeySerializer.ts",
+			"qualifiedName": "KeySerializer"
+		},
+		"43": {
+			"sourceFileName": "srv/src/Serializer/KeySerializer.ts",
+			"qualifiedName": "KeySerializer.serialize"
+		},
+		"44": {
+			"sourceFileName": "srv/src/Serializer/KeySerializer.ts",
+			"qualifiedName": "KeySerializer.serialize"
+		},
+		"45": {
+			"sourceFileName": "srv/src/Serializer/KeySerializer.ts",
+			"qualifiedName": "key"
+		},
+		"48": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": ""
+		},
+		"49": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService"
+		},
+		"50": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.__constructor"
+		},
+		"51": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService"
+		},
+		"52": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.acquireLock"
+		},
+		"53": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.acquireLock"
+		},
+		"54": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "req"
+		},
+		"55": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.grantLock"
+		},
+		"56": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.grantLock"
+		},
+		"57": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "req"
+		},
+		"58": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.prepareLockResponse"
+		},
+		"59": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.prepareLockResponse"
+		},
+		"60": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "isLocked"
+		},
+		"61": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "message"
+		},
+		"62": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.prepareUnlockResponse"
+		},
+		"63": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.prepareUnlockResponse"
+		},
+		"64": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "isLockReleased"
+		},
+		"65": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "message"
+		},
+		"66": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.checkLock"
+		},
+		"67": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.checkLock"
+		},
+		"68": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "record"
+		},
+		"69": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.setTimeouts"
+		},
+		"70": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.setTimeouts"
+		},
+		"71": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "key"
+		},
+		"72": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.releasLock"
+		},
+		"73": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.releasLock"
+		},
+		"74": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "req"
+		},
+		"75": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.expireLock"
+		},
+		"76": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "TableLockHandlerService.expireLock"
+		},
+		"77": {
+			"sourceFileName": "srv/src/Service/LockHandler.ts",
+			"qualifiedName": "req"
+		},
+		"78": {
+			"sourceFileName": "srv/src/Utility/Utiltity.ts",
+			"qualifiedName": ""
+		},
+		"79": {
+			"sourceFileName": "srv/src/Utility/Utiltity.ts",
+			"qualifiedName": "Utility"
+		},
+		"80": {
+			"sourceFileName": "srv/src/Utility/Utiltity.ts",
+			"qualifiedName": "Utility.validateTables"
+		},
+		"81": {
+			"sourceFileName": "srv/src/Utility/Utiltity.ts",
+			"qualifiedName": "Utility.validateTables"
+		},
+		"82": {
+			"sourceFileName": "srv/src/Utility/Utiltity.ts",
+			"qualifiedName": "tables"
+		},
+		"83": {
+			"sourceFileName": "srv/src/Utility/Utiltity.ts",
+			"qualifiedName": "Utility.validateApplication"
+		},
+		"84": {
+			"sourceFileName": "srv/src/Utility/Utiltity.ts",
+			"qualifiedName": "Utility.validateApplication"
+		},
+		"85": {
+			"sourceFileName": "srv/src/Utility/Utiltity.ts",
+			"qualifiedName": "app_id"
+		}
+	}
+}

@@ -1,0 +1,8 @@
+{
+    "entryPoints": ["./srv/src"],
+    "out": "./docs",
+    "exclude": ["**/*.spec.ts"],
+    "entryPointStrategy": "expand"
+    
+  }
+  
