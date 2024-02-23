@@ -19,13 +19,12 @@
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
-    "@sap/cds-dk": "^7",
-    "markdown-magic": "^2.6.1",
-    "typedoc": "^0.25.8"
+    "@sap/cds-dk": "^7"
+    
   },
   "scripts": {
-    "start": "cds-serve",
-    "generate-docs": "typedoc --out ./docs --json ./docs/docs.json ./srv/src && npx markdown-magic ./README.md"
+    "start": "cds-serve"
+
   },
   "cds": {
     "requires": {
