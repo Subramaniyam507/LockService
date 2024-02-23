@@ -1,52 +1,103 @@
-_schema-version: '3.1'
+_schema-version: "3.1"
 ID: LockService
+description: A simple CAP project.
 version: 1.0.0
-description: "A simple CAP project."
+modules:
+- name: LockService-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: LockService-db
+  - name: LockService-connectivity
+  - name: LockService-destination
+  - name: LockService-auth
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm
+- name: LockService-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: LockService-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: LockService-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: LockService-destination
+    parameters:
+      content-target: true
+  - name: LockService_html_repo_host
+    parameters:
+      service-key:
+        name: LockService_html_repo_host-key
+  - name: LockService-auth
+    parameters:
+      service-key:
+        name: uaa_LockService-key
+  - name: srv-api
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: ZBSLOCK_LockService_html_repo_host
+          ServiceInstanceName: LockService-html5-app-host-service
+          ServiceKeyName: LockService_html_repo_host-key
+          sap.cloud.service: ZBSLOCK
+        - Authentication: OAuth2UserTokenExchange
+          Name: ZBSLOCK_uaa_LockService
+          ServiceInstanceName: LockService-auth
+          ServiceKeyName: uaa_LockService-key
+          sap.cloud.service: ZBSLOCK
+        - Authentication: OAuth2UserTokenExchange
+          Name: ZBILOCK
+          TokenServiceInstanceName: LockService-auth
+          TokenServiceKeyName: uaa_LockService-key  
+          URL: ~{srv-api/srv-url}
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+resources:
+- name: LockService-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: LockService-connectivity
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: connectivity
+    service-plan: lite
+- name: LockService-destination
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: destination
+    service-plan: lite
+- name: LockService_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: LockService-html5-app-host-service
+    service-plan: app-host
+- name: LockService-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: ZXSAPP
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: LockService-xsuaa-service
+    service-plan: application
 parameters:
   enable-parallel-deployments: true
 build-parameters:
   before-all:
-    - builder: custom
-      commands:
-        - npx cds build --production
-modules:
-  - name: LockService-srv
-    type: nodejs
-    path: gen/srv
-    parameters:
-      buildpack: nodejs_buildpack
-    build-parameters:
-      builder: npm
-    provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
-        properties:
-          srv-url: ${default-url}
-    requires:
-      - name: LockService-db
-      - name: LockService-connectivity
-      - name: LockService-destination
-
-  - name: LockService-db-deployer
-    type: hdb
-    path: gen/db
-    parameters:
-      buildpack: nodejs_buildpack
-    requires:
-      - name: LockService-db
-
-resources:
-  - name: LockService-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
-  - name: LockService-connectivity
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: connectivity
-      service-plan: lite
-  - name: LockService-destination
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: destination
-      service-plan: lite
+  - builder: custom
+    commands:
+    - npx cds build --production
