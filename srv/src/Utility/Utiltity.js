@@ -25,7 +25,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Utility = void 0;
 const constants = __importStar(require("../constants/constants.json"));
+/**
+ * Utility class containing methods for validation.
+ */
 class Utility {
+    /**
+     * Validates the existence of tables.
+     * @param {string[]} tables - An array of table names to be validated.
+     * @returns {boolean} Returns true if all tables exist, otherwise false.
+     */
     static validateTables(tables) {
         let result = true;
         for (let i = 0; i < tables.length; i++) {
@@ -37,6 +45,11 @@ class Utility {
         }
         return result;
     }
+    /**
+     * Validates the application ID (Ricef).
+     * @param {string} app_id - The application ID (Ricef) to be validated.
+     * @returns {boolean} Returns true if the application ID is valid, otherwise false.
+     */
     static validateApplication(app_id) {
         return constants.acquireLockConstants.validRicef.includes(app_id);
     }

@@ -8,7 +8,7 @@ service DistributedCacheService {
     action checkLock(keyfields: TableKeys) returns CheckLock;
 
     action clearCache(keyfields: TableKeys) returns String;
-
+  
     function viewLockCache() returns array of String;
 
     function viewTimeouts() returns array of String;

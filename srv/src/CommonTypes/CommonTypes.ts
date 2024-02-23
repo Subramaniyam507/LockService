@@ -1,32 +1,89 @@
-
-// Interface for LockDetails
+/**
+ * Interface representing the details of a lock.
+ * @interface
+ */
 export interface LockDetails {
-    isLocked: Boolean;
-    app_id: String;
-    user: String;
+    /**
+     * Indicates whether the resource is currently locked.
+     */
+    isLocked: boolean;
+    
+    /**
+     * The application ID associated with the lock.
+     */
+    app_id: string;
+    
+    /**
+     * The user who holds the lock.
+     */
+    user: string;
 }
 
-// Interface for TableKeys
+/**
+ * Interface representing the keys associated with a table for locking purposes.
+ * @interface
+ */
 export interface TableKeys {
-    fields: String[];
-    tables: String[];
+    /**
+     * An array of field names associated with the table.
+     */
+    fields: string[];
+    
+    /**
+     * An array of table names.
+     */
+    tables: string[];
 }
 
-// Interface for LockResponse
+/**
+ * Interface representing the response to a lock request.
+ * @interface
+ */
 export interface LockResponse {
-    isLocked: Boolean;
-    message: String;
+    /**
+     * Indicates whether the lock request was successful.
+     */
+    isLocked: boolean;
+    
+    /**
+     * A message providing additional information about the lock status.
+     */
+    message: string;
 }
 
-// Interface for UnlockResponse
+/**
+ * Interface representing the response to an unlock request.
+ * @interface
+ */
 export interface UnlockResponse {
-    isLockReleased: Boolean;
-    message: String;
+    /**
+     * Indicates whether the resource was successfully unlocked.
+     */
+    isLockReleased: boolean;
+    
+    /**
+     * A message providing additional information about the unlock status.
+     */
+    message: string;
 }
 
-// Interface for CheckLock
+/**
+ * Interface representing the result of checking the lock status.
+ * @interface
+ */
 export interface CheckLock {
-    isLocked: Boolean;
-    app_id: String;
-    user: String;
+    /**
+     * Indicates whether the resource is currently locked.
+     */
+    isLocked: boolean;
+    
+    /**
+     * The application ID associated with the lock.
+     */
+    app_id: string;
+    
+    /**
+     * The user who holds the lock.
+     */
+    user: string;
 }
