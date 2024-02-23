@@ -1,0 +1,28 @@
+{
+    "acquireLockConstants": {
+    "validTables": ["Table1","Table2"],
+    "invalidTableMessage": "Lock cannot be granted: Invalid Table Name",
+    "timeouts": {
+        "keyTimeout": 86400000,
+        "lockTimeout": 1200000
+    },
+    "validRicef": [
+        "hello"
+    ],
+    "invalidApplication": "Lock cannot be granted: Invalid Application",
+    "lockedByAnotherUser": "The record has already been locked by",
+    "lockedInDifferentApplication": "The record has been locked by the same user",
+    "lockSuccess": "The lock for the record is granted to the user",
+
+    "releaseLockConstants": {
+        "invalidTableMessage": "Lock cannot be released: Invalid Table Name",
+        "lockReleaseSuccess": "Lock has been successfully released",
+        "lockOwnershipFailure": "The provided user is not the owner of this lock",
+        "differentAppLock": "The lock cannot be released as it was granted to",
+        "noExistingLock": "There are no locks for the given records and tables",
+        "notLockedYet": "The record has not been locked yet, hence unable to release the lock"
+    }
+    
+}
+
+}
