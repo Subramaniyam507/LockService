@@ -2,7 +2,7 @@ type RequestLockAndUnLock {
     fields: array of String;
     tables: array of String;
     user: String;
-    app_id: String;
+    ricef: String;
 }
 
 type LockResponse {

@@ -34,4 +34,15 @@ module.exports = (srv) => {
         }));
         return arrayOfObjects;
     });
+    srv.on("checkLock", function (req) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let service = new LockHandler_1.TableLockHandlerService();
+            const sorted = {
+                fields: req.data.keyfields.fields.sort(),
+                tables: req.data.keyfields.tables.sort()
+            };
+            const result = yield service.checkLock(sorted);
+            return result;
+        });
+    });
 };

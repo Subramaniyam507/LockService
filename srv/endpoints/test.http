@@ -1,0 +1,55 @@
+###acquireLock
+POST http://localhost:4004/odata/v4/distributed-cache/acquireLock
+Content-Type: application/json
+
+{
+    "request":{
+        "fields":[
+            "1",
+            "2",
+            "3"
+        ],
+        "tables":[
+            "Table1","Table2"
+        ],
+        "user":"User2",
+        "ricef":"ricef1"
+    }
+}
+
+###acquireLock
+POST http://localhost:4004/odata/v4/distributed-cache/releaseLock
+Content-Type: application/json
+
+{
+    "request":{
+        "fields":[
+            "1",
+            "2",
+            "4"
+        ],
+        "tables":[
+            "Table1","Table2"
+        ],
+        "user":"User1",
+        "ricef":"ricef1"
+    }
+}
+
+###check lock
+POST http://localhost:4004/odata/v4/distributed-cache/checkLock
+Content-Type: application/json
+
+{
+    "keyfields":{
+        "fields":[
+            "1",
+            "21",
+            "4"
+        ],
+        "tables":[
+            "Table1","Table2"
+        ]
+      
+    }
+}
