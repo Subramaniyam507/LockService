@@ -7,7 +7,8 @@
         "lockTimeout": 1200000
     },
     "validRicef": [
-        "hello"
+        "ricef1",
+        "ricef2"
     ],
     "invalidApplication": "Lock cannot be granted: Invalid Application",
     "lockedByAnotherUser": "The record has already been locked by",

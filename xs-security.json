@@ -1,5 +1,5 @@
 {
-  "xsappname": "ZXSAPP",
+  "xsappname": "XSAPPLOCK",
   "tenant-mode": "dedicated",
   "description": "Security profile of called application",
   "scopes": [
