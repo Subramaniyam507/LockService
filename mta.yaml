@@ -23,6 +23,8 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: LockService-db
+      - name: LockService-connectivity
+      - name: LockService-destination
 
   - name: LockService-db-deployer
     type: hdb
@@ -38,3 +40,13 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: LockService-connectivity
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite
+  - name: LockService-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite

@@ -21,6 +21,8 @@
     "start": "cds-serve"
   },
   "cds": {
-    "requires": {}
+    "requires": {
+      "destinations": true
+    }
   }
 }
