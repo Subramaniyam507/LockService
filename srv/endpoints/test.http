@@ -5,14 +5,14 @@ Content-Type: application/json
 {
     "request":{
         "fields":[
-            "1",
-            "2",
-            "3"
+            "Primary Key data 1 ",
+            "Primary Key data 2 ",
+            "Primary Key data 3"
         ],
         "tables":[
             "Table1","Table2"
         ],
-        "user":"User2",
+        "user":"subramaniyam.n@gmail.com",
         "ricef":"ricef1"
     }
 }
@@ -53,3 +53,6 @@ Content-Type: application/json
       
     }
 }
+###get cache lock 
+
+GET http://localhost:4004/odata/v4/distributed-cache/viewLockCache()

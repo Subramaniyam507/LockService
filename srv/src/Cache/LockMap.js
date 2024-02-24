@@ -12,55 +12,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TableLockHashMap = void 0;
 const inversify_1 = require("inversify");
 const KeySerializer_1 = require("../Serializer/KeySerializer");
-/**
- * Service providing a hash map for managing locks associated with table keys.
- * @remarks
- * This class uses an Inversion of Control (IoC) container and dependency injection via Inversify.
- */
 let TableLockHashMap = class TableLockHashMap {
-    /**
-     * Constructs a new instance of the TableLockHashMap class.
-     * Initializes the internal cacheLockMap.
-     */
     constructor() {
         this.cacheLockMap = new Map();
     }
-    /**
-     * Retrieves the entire cache map containing table keys and associated lock details.
-     * @returns The cache map.
-     */
     getCacheMap() {
         return this.cacheLockMap;
     }
-    /**
-     * Sets a lock entry in the cache map for the specified table key.
-     * @param key - The table key.
-     * @param value - The lock details associated with the key.
-     */
     set(key, value) {
         this.cacheLockMap.set(KeySerializer_1.KeySerializer.serialize(key), value);
     }
-    /**
-     * Retrieves the lock details for the specified table key from the cache map.
-     * @param key - The table key.
-     * @returns The lock details associated with the key, or undefined if not found.
-     */
     get(key) {
         return this.cacheLockMap.get(KeySerializer_1.KeySerializer.serialize(key));
     }
-    /**
-     * Deletes the lock entry for the specified table key from the cache map.
-     * @param key - The table key.
-     * @returns True if the lock entry was successfully deleted, false otherwise.
-     */
     delete(key) {
         return this.cacheLockMap.delete(KeySerializer_1.KeySerializer.serialize(key));
     }
-    /**
-     * Checks if the cache map contains a lock entry for the specified table key.
-     * @param key - The table key.
-     * @returns True if the cache map contains a lock entry for the key, false otherwise.
-     */
     hasKey(key) {
         return this.cacheLockMap.has(KeySerializer_1.KeySerializer.serialize(key));
     }

@@ -3,21 +3,13 @@ import { container } from "../Cache/ContainerConfig";
 import { TableLockHashMap } from "../Cache/LockMap";
 import { Utility } from '../Utility/Utiltity';
 import * as constants from '../constants/constants.json';
- /**
- * Service for handling table locks.
- * @class
- */
+
 export class TableLockHandlerService {
 
     constructor() {
         // Constructor logic if needed
     }
-  /**
-     * Attempts to acquire a lock based on the provided request.
-     * @async
-     * @param {any} req - The request object containing lock details.
-     * @returns {Promise<LockResponse>} A promise resolving to the lock response.
-     */
+
     public async acquireLock(req: any): Promise<LockResponse> {
         const tables = req.data.request.tables;
 
@@ -32,12 +24,7 @@ export class TableLockHandlerService {
         const resp = this.grantLock(req);
         return resp;
     }
- /**
-     * Grants a lock based on the provided request.
-     * @private
-     * @param {any} req - The request object containing lock details.
-     * @returns {LockResponse} The lock response.
-     */
+
     private grantLock(req: any): LockResponse {
         const tableLockHashMap = container.get<TableLockHashMap>('cacheLockMap');
         const key: TableKeys = {
@@ -97,13 +84,7 @@ export class TableLockHandlerService {
     
     }
 
-      /**
-     * Prepares a lock response with the specified parameters.
-     * @private
-     * @param {boolean} isLocked - Indicates whether the lock was successful.
-     * @param {string} message - The message associated with the lock response.
-     * @returns {LockResponse} The prepared lock response.
-     */
+  
     private prepareLockResponse(isLocked: boolean, message: string): LockResponse {
         const response: LockResponse = {
             isLocked: isLocked,
@@ -111,13 +92,7 @@ export class TableLockHandlerService {
         };
         return response;
     }
-    /**
-     * Prepares an unlock response with the specified parameters.
-     * @private
-     * @param {boolean} isLockReleased - Indicates whether the unlock was successful.
-     * @param {string} message - The message associated with the unlock response.
-     * @returns {UnlockResponse} The prepared unlock response.
-     */
+
     private prepareUnlockResponse(isLockReleased: boolean, message: string): UnlockResponse {
         const response: UnlockResponse = {
             isLockReleased: isLockReleased,
@@ -125,12 +100,7 @@ export class TableLockHandlerService {
         };
         return response;
     }
-     /**
-     * Checks the lock status for the specified record.
-     * @async
-     * @param {TableKeys} record - The table keys representing the record.
-     * @returns {Promise<LockDetails>} A promise resolving to the lock details.
-     */
+  
     public async checkLock(record: TableKeys): Promise<LockDetails> {
         const tableLockHashMap = container.get<TableLockHashMap>('cacheLockMap');
     
@@ -152,11 +122,7 @@ export class TableLockHandlerService {
             return lockDetails;
         }
     }
-      /**
-     * Sets timeouts for key expiration and lock refresh.
-     * @private
-     * @param {TableKeys} key - The table keys associated with the lock.
-     */
+   
     private setTimeouts(key:TableKeys){
         const tableLockHashMap = container.get<TableLockHashMap>('cacheLockMap');
 
@@ -177,12 +143,7 @@ export class TableLockHandlerService {
             }
         },constants.acquireLockConstants.timeouts.lockTimeout);
     }
-      /**
-     * Attempts to release a lock based on the provided request.
-     * @async
-     * @param {any} req - The request object containing lock details.
-     * @returns {Promise<UnlockResponse>} A promise resolving to the unlock response.
-     */
+
     public async releasLock(req:any):Promise<UnlockResponse>{
     const tables = req.data.request.tables;
 
@@ -198,12 +159,7 @@ export class TableLockHandlerService {
     
     return result;
 }
- /**
-     * Expires a lock based on the provided request.
-     * @private
-     * @param {any} req - The request object containing lock details.
-     * @returns {UnlockResponse} The unlock response.
-     */
+
 private expireLock(req: any): UnlockResponse {
     const tableLockHashMap = container.get<TableLockHashMap>('cacheLockMap');
     const key: TableKeys = {
