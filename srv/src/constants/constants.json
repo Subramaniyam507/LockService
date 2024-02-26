@@ -1,6 +1,6 @@
 {
     "acquireLockConstants": {
-    "validTables": ["Table1","Table2"],
+    "validTables": ["Table1","Table2","Orders","Customers"],
     "invalidTableMessage": "Lock cannot be granted: Invalid Table Name",
     "timeouts": {
         "keyTimeout": 86400000,
