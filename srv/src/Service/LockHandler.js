@@ -138,11 +138,11 @@ class TableLockHandlerService {
             if (!Utiltity_1.Utility.validateApplication(req.data.request.ricef)) {
                 req.reject(400, constants.acquireLockConstants.invalidApplication);
             }
-            const result = this.expireLock(req);
+            const result = this.unlock(req);
             return result;
         });
     }
-    expireLock(req) {
+    unlock(req) {
         const tableLockHashMap = ContainerConfig_1.container.get('cacheLockMap');
         const key = {
             fields: req.data.request.fields.sort(),

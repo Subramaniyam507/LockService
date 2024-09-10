@@ -155,12 +155,12 @@ export class TableLockHandlerService {
         req.reject(400, constants.acquireLockConstants.invalidApplication);
     }
     
-    const result = this.expireLock(req);
+    const result = this.unlock(req);
     
     return result;
 }
 
-private expireLock(req: any): UnlockResponse {
+private unlock(req: any): UnlockResponse {
     const tableLockHashMap = container.get<TableLockHashMap>('cacheLockMap');
     const key: TableKeys = {
         fields: req.data.request.fields.sort(),
